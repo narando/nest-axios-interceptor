@@ -1,6 +1,6 @@
 {
   "name": "@narando/nest-axios-interceptor",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "author": "Julian Tölle <julian@narando.de>",
   "license": "MIT",
