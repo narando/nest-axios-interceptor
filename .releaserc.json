@@ -5,6 +5,5 @@
     "@semantic-release/npm",
     "@semantic-release/git"
   ],
-  "repositoryUrl": "https://github.com/narando/nest-axios-interceptor",
-  "dryRun": true
+  "repositoryUrl": "https://github.com/narando/nest-axios-interceptor"
 }
