@@ -5,7 +5,15 @@ index.ts
 package-lock.json
 tslint.json
 tsconfig.json
+tsconfig.build.json
+nest-cli.json
+.eslintrc
+
+# build+coverage
+coverage
+dist/tsconfig.build.tsbuildinfo
 
 # github
 .github
 renovate.json
+.releaserc.json
