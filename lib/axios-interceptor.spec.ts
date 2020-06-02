@@ -50,7 +50,8 @@ describe("AxiosInterceptor", () => {
           // @ts-ignore
           "registerInterceptors"
         )
-        .mockReturnValue();
+        // @ts-ignore
+        .mockReturnValue(); // Typing require 1 argument, but function has return type `void`/never
 
       axiosInterceptor.onModuleInit();
 
@@ -97,19 +98,19 @@ describe("AxiosInterceptor", () => {
 
       const requestFulfilled = jest
         // @ts-ignore
-        .spyOn(axiosInterceptor, "requestFulfilled")
+        .spyOn<any>(axiosInterceptor, "requestFulfilled")
         .mockReturnValue(requestFulfilledReturnFunction);
       const requestRejected = jest
         // @ts-ignore
-        .spyOn(axiosInterceptor, "requestRejected")
+        .spyOn<any>(axiosInterceptor, "requestRejected")
         .mockReturnValue(requestRejectedReturnFunction);
       const responseFulfilled = jest
         // @ts-ignore
-        .spyOn(axiosInterceptor, "responseFulfilled")
+        .spyOn<any>(axiosInterceptor, "responseFulfilled")
         .mockReturnValue(responseFulfilledReturnFunction);
       const responseRejected = jest
         // @ts-ignore
-        .spyOn(axiosInterceptor, "responseRejected")
+        .spyOn<any>(axiosInterceptor, "responseRejected")
         .mockReturnValue(responseRejectedReturnFunction);
 
       // @ts-ignore
