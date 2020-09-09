@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-ignore */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 
 import { HttpService, Injectable } from "@nestjs/common";
 import { Test } from "@nestjs/testing";
