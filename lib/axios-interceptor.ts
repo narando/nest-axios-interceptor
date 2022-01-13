@@ -15,7 +15,8 @@ export abstract class AxiosInterceptor<
   TRequestConfig extends AxiosRequestConfig = AxiosRequestConfig,
   TResponse extends AxiosResponse = AxiosResponseCustomConfig<TRequestConfig>,
   TAxiosError extends AxiosError = AxiosErrorCustomConfig<TRequestConfig>
-> implements OnModuleInit {
+> implements OnModuleInit
+{
   protected readonly httpService: HttpService;
 
   constructor(httpService: HttpService) {
@@ -75,6 +76,7 @@ export abstract class AxiosInterceptor<
     return identityRejected;
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   protected isAxiosError(err: any): err is TAxiosError {
     return !!(err.isAxiosError && err.isAxiosError === true);
   }
