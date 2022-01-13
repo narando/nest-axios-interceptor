@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/narando/nest-axios-interceptor/compare/v1.2.0...v1.2.1) (2022-01-13)
+
+
+### Bug Fixes
+
+* **lib:** linting after prettier update ([65a5904](https://github.com/narando/nest-axios-interceptor/commit/65a59043979bd2a61c44d35653f8d22d0a74e2f3))
+
 # [1.2.0](https://github.com/narando/nest-axios-interceptor/compare/v1.1.0...v1.2.0) (2022-01-12)
 
 
