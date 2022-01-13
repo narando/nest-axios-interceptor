@@ -24,16 +24,15 @@ describe("AxiosInterceptor", () => {
         {
           provide: HttpService,
           useFactory: (): HttpService =>
-            (({
+            ({
               axiosRef: {},
-            } as any) as HttpService),
+            } as any as HttpService),
         },
       ],
     }).compile();
 
-    axiosInterceptor = moduleRef.get<TestAxiosInterceptor>(
-      TestAxiosInterceptor
-    );
+    axiosInterceptor =
+      moduleRef.get<TestAxiosInterceptor>(TestAxiosInterceptor);
     httpService = moduleRef.get<HttpService>(HttpService);
   });
 
