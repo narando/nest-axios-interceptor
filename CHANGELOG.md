@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/narando/nest-axios-interceptor/compare/v1.2.1...v1.2.2) (2022-01-13)
+
+
+### Bug Fixes
+
+* **eslint:** update extended prettier rules ([d6d8882](https://github.com/narando/nest-axios-interceptor/commit/d6d88829ef51dc59ff1cedd3abc252a891a7a829))
+
 ## [1.2.1](https://github.com/narando/nest-axios-interceptor/compare/v1.2.0...v1.2.1) (2022-01-13)
 
 
