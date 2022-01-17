@@ -23,7 +23,7 @@
     "@nestjs/common": "^6.7.0 || ^7.0.0 || ^8.0.0",
     "@nestjs/core": "^6.7.0 || ^7.0.0 || ^8.0.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^6.5.3"
+    "rxjs": "^6.5.3 || ^7.0.0"
   },
   "devDependencies": {
     "@nestjs/cli": "8.2.0",
@@ -44,7 +44,7 @@
     "prettier": "2.5.1",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",
-    "rxjs": "6.6.7",
+    "rxjs": "7.5.2",
     "supertest": "6.2.1",
     "ts-jest": "27.0.7",
     "ts-loader": "9.2.6",
