@@ -1,4 +1,5 @@
-import type { HttpService, OnModuleInit } from "@nestjs/common";
+import type { OnModuleInit } from "@nestjs/common";
+import type { HttpService } from "@nestjs/axios";
 import type {
   AxiosError,
   AxiosInterceptorManager,
