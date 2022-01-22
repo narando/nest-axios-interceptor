@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
-import { HttpService, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
+import { HttpService } from "@nestjs/axios";
 import { Test } from "@nestjs/testing";
 import { AxiosInterceptor } from "./axios-interceptor";
 import { AxiosError } from "axios";
