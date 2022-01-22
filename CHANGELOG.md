@@ -1,3 +1,17 @@
+# [2.0.0](https://github.com/narando/nest-axios-interceptor/compare/v1.2.2...v2.0.0) (2022-01-22)
+
+
+### Features
+
+* **deps:** support NestJS 8 and @nestjs/axios ([24446b7](https://github.com/narando/nest-axios-interceptor/commit/24446b7d8e812815f8049af6293e270908fb1ea0))
+
+
+### BREAKING CHANGES
+
+* **deps:** Drop support for NestJS <8 and the HttpService from
+@nestjs/common. Instead add support for NestJS 8 and the HttpService from
+@nestjs/axios.
+
 ## [1.2.2](https://github.com/narando/nest-axios-interceptor/compare/v1.2.1...v1.2.2) (2022-01-13)
 
 
