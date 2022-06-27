@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/narando/nest-axios-interceptor/compare/v2.0.0...v2.1.0) (2022-06-27)
+
+
+### Features
+
+* support @nestjs/axios up to 0.0.8 ([85cba93](https://github.com/narando/nest-axios-interceptor/commit/85cba93fffa7a9f66ebaa0c2626acdff9f7f4c1d))
+
 # [2.0.0](https://github.com/narando/nest-axios-interceptor/compare/v1.2.2...v2.0.0) (2022-01-22)
 
 
