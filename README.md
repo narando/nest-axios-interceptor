@@ -22,7 +22,7 @@
 > ⚠️ If you want to use @narando/nest-axios-interceptor with NestJS Version 6 or 7,
 > please use the v1 release.
 >
-> The v2 release is only compatible with NestJS Version 8 and @nestjs/axios package.
+> The v2 release is only compatible with NestJS Versions 8 and 9 and @nestjs/axios package.
 
 ### Installation
 
