@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/narando/nest-axios-interceptor/compare/v2.1.0...v2.2.0) (2022-07-23)
+
+
+### Features
+
+* **deps:** support NestJS 9 ([5a0e1ed](https://github.com/narando/nest-axios-interceptor/commit/5a0e1edaf6eec21372ca233559be5e5fb838f26f))
+
 # [2.1.0](https://github.com/narando/nest-axios-interceptor/compare/v2.0.0...v2.1.0) (2022-06-27)
 
 
