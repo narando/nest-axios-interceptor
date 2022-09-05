@@ -41,7 +41,7 @@
     "@typescript-eslint/parser": "5.10.2",
     "eslint": "8.23.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-prettier": "4.2.1",
     "jest": "27.5.1",
     "prettier": "2.5.1",
     "reflect-metadata": "0.1.13",
