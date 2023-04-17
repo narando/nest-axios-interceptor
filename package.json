@@ -46,7 +46,7 @@
     "prettier": "2.8.7",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",
-    "rxjs": "7.5.7",
+    "rxjs": "7.8.0",
     "supertest": "6.3.3",
     "ts-jest": "27.1.5",
     "ts-loader": "9.4.2",
