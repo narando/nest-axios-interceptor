@@ -1,10 +1,10 @@
-import type { OnModuleInit } from "@nestjs/common";
 import type { HttpService } from "@nestjs/axios";
+import type { OnModuleInit } from "@nestjs/common";
 import type {
   AxiosError,
   AxiosInterceptorManager,
-  AxiosRequestConfig,
   AxiosResponse,
+  InternalAxiosRequestConfig,
 } from "axios";
 import { identityFulfilled, identityRejected } from "./identity-functions";
 import { AxiosErrorCustomConfig } from "./interfaces/axios-error-custom-config";
@@ -13,7 +13,7 @@ import { AxiosRejectedInterceptor } from "./interfaces/axios-rejected-intercepto
 import { AxiosResponseCustomConfig } from "./interfaces/axios-response-custom-config";
 
 export abstract class AxiosInterceptor<
-  TRequestConfig extends AxiosRequestConfig = AxiosRequestConfig,
+  TRequestConfig extends InternalAxiosRequestConfig = InternalAxiosRequestConfig,
   TResponse extends AxiosResponse = AxiosResponseCustomConfig<TRequestConfig>,
   TAxiosError extends AxiosError = AxiosErrorCustomConfig<TRequestConfig>
 > implements OnModuleInit
@@ -77,7 +77,6 @@ export abstract class AxiosInterceptor<
     return identityRejected;
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   protected isAxiosError(err: any): err is TAxiosError {
     return !!(err.isAxiosError && err.isAxiosError === true);
   }

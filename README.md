@@ -8,7 +8,7 @@
     <a href="https://www.npmjs.com/package/@narando/nest-axios-interceptor" target="_blank"><img src="https://img.shields.io/npm/v/@narando/nest-axios-interceptor.svg" alt="NPM Version"/></a>
     <a href="https://www.npmjs.com/package/@narando/nest-axios-interceptor" target="_blank"><img src="https://img.shields.io/npm/l/@narando/nest-axios-interceptor.svg" alt="Package License"/></a>
     <a href="https://www.npmjs.com/package/@narando/nest-axios-interceptor" target="_blank"><img src="https://img.shields.io/npm/dm/@narando/nest-axios-interceptor.svg" alt="NPM Downloads"/></a>
-    <a href="https://github.com/narando/nest-axios-interceptor/actions?query=workflow%3A%22CI%22" target="_blank"><img src="https://img.shields.io/github/workflow/status/narando/nest-axios-interceptor/CI/master" alt="Travis"/></a>
+    <a href="https://github.com/narando/nest-axios-interceptor/actions?query=workflow%3A%22CI%22" target="_blank"><img src="https://img.shields.io/github/actions/workflow/status/narando/nest-axios-interceptor/ci.yaml?branch=main" alt="CI Status"/></a>
 </p>
 
 ## Features
@@ -18,11 +18,6 @@
 - Type-safe handling of custom options in request config
 
 ## Usage
-
-> ⚠️ If you want to use @narando/nest-axios-interceptor with NestJS Version 6 or 7,
-> please use the v1 release.
->
-> The v2 release is only compatible with NestJS Versions 8 and 9 and @nestjs/axios package.
 
 ### Installation
 
@@ -53,7 +48,7 @@ Bootstrap your new interceptor with this boilerplate:
 // logging.axios-interceptor.ts
 import { Injectable } from "@nestjs/common";
 import { HttpService } from "@nestjs/axios";
-import type { AxiosRequestConfig, AxiosResponse } from "axios";
+import type { AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import {
   AxiosInterceptor,
   AxiosFulfilledInterceptor,
@@ -66,7 +61,7 @@ export class LoggingAxiosInterceptor extends AxiosInterceptor {
     super(httpService);
   }
 
-  // requestFulfilled(): AxiosFulfilledInterceptor<AxiosRequestConfig> {}
+  // requestFulfilled(): AxiosFulfilledInterceptor<InternalAxiosRequestConfig> {}
   // requestRejected(): AxiosRejectedInterceptor {}
   // responseFulfilled(): AxiosFulfilledInterceptor<AxiosResponse> {}
   // responseRejected(): AxiosRejectedInterceptor {}
@@ -85,7 +80,7 @@ export class LoggingAxiosInterceptor extends AxiosInterceptor {
     super(httpService);
   }
 
-  requestFulfilled(): AxiosFulfilledInterceptor<AxiosRequestConfig> {
+  requestFulfilled(): AxiosFulfilledInterceptor<InternalAxiosRequestConfig> {
     return (config) => {
       // Log outgoing request
       console.log(`Request: ${config.method} ${config.path}`);
@@ -111,7 +106,7 @@ First, define your new request config type. To avoid conflicts with other interc
 const LOGGING_CONFIG_KEY = Symbol("kLoggingAxiosInterceptor");
 
 // Merging our custom properties with the base config
-interface LoggingConfig extends AxiosRequestConfig {
+interface LoggingConfig extends InternalAxiosRequestConfig {
   [LOGGING_CONFIG_KEY]: {
     id: number;
   };
@@ -129,7 +124,7 @@ Now we have to update the interceptor to use this new config:
       super(httpService);
     }
 
--   requestFulfilled(): AxiosFulfilledInterceptor<AxiosRequestConfig> {
+-   requestFulfilled(): AxiosFulfilledInterceptor<InternalAxiosRequestConfig> {
 +   requestFulfilled(): AxiosFulfilledInterceptor<LoggingConfig> {
       return (config) => {
         // Log outgoing request
@@ -205,7 +200,7 @@ export class LoggingAxiosInterceptor extends AxiosInterceptor {
     super(httpService);
   }
 
-  // requestFulfilled(): AxiosFulfilledInterceptor<AxiosRequestConfig> {}
+  // requestFulfilled(): AxiosFulfilledInterceptor<InternalAxiosRequestConfig> {}
   // requestRejected(): AxiosRejectedInterceptor {}
   // responseFulfilled(): AxiosFulfilledInterceptor<AxiosResponse> {}
 
@@ -225,6 +220,68 @@ export class LoggingAxiosInterceptor extends AxiosInterceptor {
     };
   }
 }
+```
+
+## Upgrading
+
+### Version Compatibility
+
+| nest-axios-interceptor | @nestjs/axios | @nestjs    |
+| ---------------------- |---------------|------------|
+| 3.x                    | 2.x & 3.x     | 9.x & 10.x |
+| 2.x                    | 1.x           | 8.x        |
+| 1.x                    | 0.x           | 7.x        |
+
+### v2 to v3
+
+Version 3 requires:
+
+- @nestjs/axios > 2.0.0
+- @nestjs > 9.0.0
+
+The axios internal types for request configs changed (`AxiosRequestConfig` -> `InternalAxiosRequestConfig`), and you need to update your types to match.
+
+If you do not use custom configs, you can use this diff:
+
+```diff
+ // logging.axios-interceptor.ts
+ import { Injectable } from "@nestjs/common";
+ import { HttpService } from "@nestjs/axios";
+-import type { AxiosResponse, AxiosRequestConfig } from "axios";
++import type { AxiosResponse, InternalAxiosRequestConfig } from "axios";
+ import {
+   AxiosInterceptor,
+   AxiosFulfilledInterceptor,
+   AxiosRejectedInterceptor,
+ } from "@narando/nest-axios-interceptor";
+
+ @Injectable()
+ export class LoggingAxiosInterceptor extends AxiosInterceptor {
+   constructor(httpService: HttpService) {
+     super(httpService);
+   }
+
+-  // requestFulfilled(): AxiosFulfilledInterceptor<AxiosRequestConfig> {}
++  // requestFulfilled(): AxiosFulfilledInterceptor<InternalAxiosRequestConfig> {}
+   // requestRejected(): AxiosRejectedInterceptor {}
+   // responseFulfilled(): AxiosFulfilledInterceptor<AxiosResponse> {}
+   // responseRejected(): AxiosRejectedInterceptor {}
+ }
+```
+
+If you use custom configs, you also need to change the custom config:
+
+```diff
+ // logging.axios-interceptor.ts
+ const LOGGING_CONFIG_KEY = Symbol("kLoggingAxiosInterceptor");
+
+ // Merging our custom properties with the base config
+-interface LoggingConfig extends AxiosRequestConfig {
++interface LoggingConfig extends InternalAxiosRequestConfig {
+   [LOGGING_CONFIG_KEY]: {
+     id: number;
+   };
+ }
 ```
 
 ## License

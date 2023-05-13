@@ -1,6 +1,7 @@
-import type { AxiosError, AxiosRequestConfig } from "axios";
+import type { AxiosError, InternalAxiosRequestConfig } from "axios";
 
-export interface AxiosErrorCustomConfig<TConfig extends AxiosRequestConfig>
-  extends AxiosError {
+export interface AxiosErrorCustomConfig<
+  TConfig extends InternalAxiosRequestConfig
+> extends AxiosError {
   config: TConfig;
 }

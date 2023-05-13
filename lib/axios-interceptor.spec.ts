@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
-import { Injectable } from "@nestjs/common";
 import { HttpService } from "@nestjs/axios";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Injectable } from "@nestjs/common";
 import { Test } from "@nestjs/testing";
-import { AxiosInterceptor } from "./axios-interceptor";
 import { AxiosError } from "axios";
+import { AxiosInterceptor } from "./axios-interceptor";
 
 // AxiosInterceptor is abstract and can not be instantiated
 @Injectable()
@@ -97,20 +98,16 @@ describe("AxiosInterceptor", () => {
       const responseRejectedReturnFunction = jest.fn();
 
       const requestFulfilled = jest
-        // @ts-ignore
-        .spyOn<any>(axiosInterceptor, "requestFulfilled")
+        .spyOn(axiosInterceptor as any, "requestFulfilled")
         .mockReturnValue(requestFulfilledReturnFunction);
       const requestRejected = jest
-        // @ts-ignore
-        .spyOn<any>(axiosInterceptor, "requestRejected")
+        .spyOn(axiosInterceptor as any, "requestRejected")
         .mockReturnValue(requestRejectedReturnFunction);
       const responseFulfilled = jest
-        // @ts-ignore
-        .spyOn<any>(axiosInterceptor, "responseFulfilled")
+        .spyOn(axiosInterceptor as any, "responseFulfilled")
         .mockReturnValue(responseFulfilledReturnFunction);
       const responseRejected = jest
-        // @ts-ignore
-        .spyOn<any>(axiosInterceptor, "responseRejected")
+        .spyOn(axiosInterceptor as any, "responseRejected")
         .mockReturnValue(responseRejectedReturnFunction);
 
       // @ts-ignore
@@ -140,7 +137,7 @@ describe("AxiosInterceptor", () => {
       const axiosError: AxiosError = new Error() as AxiosError;
       axiosError.toJSON = jest.fn();
       axiosError.isAxiosError = true;
-      axiosError.config = {};
+      axiosError.config = {} as any;
 
       // @ts-ignore
       expect(axiosInterceptor.isAxiosError(axiosError)).toBe(true);
