@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@nestjs/axios": "0.1.0",
-    "@nestjs/cli": "10.1.12",
+    "@nestjs/cli": "10.1.16",
     "@nestjs/common": "9.4.3",
     "@nestjs/core": "9.4.3",
     "@nestjs/schematics": "9.2.0",
