@@ -28,7 +28,7 @@ describe("AxiosInterceptor", () => {
           useFactory: (): HttpService =>
             ({
               axiosRef: {},
-            } as any as HttpService),
+            }) as any as HttpService,
         },
       ],
     }).compile();
@@ -49,7 +49,7 @@ describe("AxiosInterceptor", () => {
         .spyOn(
           axiosInterceptor,
           // @ts-ignore
-          "registerInterceptors"
+          "registerInterceptors",
         )
         // @ts-ignore
         .mockReturnValue(); // Typing require 1 argument, but function has return type `void`/never
@@ -81,13 +81,13 @@ describe("AxiosInterceptor", () => {
       expect(requestUse).toHaveBeenCalledTimes(1);
       expect(requestUse).toHaveBeenCalledWith(
         expect.any(Function),
-        expect.any(Function)
+        expect.any(Function),
       );
 
       expect(responseUse).toHaveBeenCalledTimes(1);
       expect(responseUse).toHaveBeenCalledWith(
         expect.any(Function),
-        expect.any(Function)
+        expect.any(Function),
       );
     });
 
@@ -121,13 +121,13 @@ describe("AxiosInterceptor", () => {
       expect(requestUse).toHaveBeenCalledTimes(1);
       expect(requestUse).toHaveBeenCalledWith(
         requestFulfilledReturnFunction,
-        requestRejectedReturnFunction
+        requestRejectedReturnFunction,
       );
 
       expect(responseUse).toHaveBeenCalledTimes(1);
       expect(responseUse).toHaveBeenCalledWith(
         responseFulfilledReturnFunction,
-        responseRejectedReturnFunction
+        responseRejectedReturnFunction,
       );
     });
   });

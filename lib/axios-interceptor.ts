@@ -13,9 +13,10 @@ import { AxiosRejectedInterceptor } from "./interfaces/axios-rejected-intercepto
 import { AxiosResponseCustomConfig } from "./interfaces/axios-response-custom-config";
 
 export abstract class AxiosInterceptor<
-  TRequestConfig extends InternalAxiosRequestConfig = InternalAxiosRequestConfig,
+  TRequestConfig extends
+    InternalAxiosRequestConfig = InternalAxiosRequestConfig,
   TResponse extends AxiosResponse = AxiosResponseCustomConfig<TRequestConfig>,
-  TAxiosError extends AxiosError = AxiosErrorCustomConfig<TRequestConfig>
+  TAxiosError extends AxiosError = AxiosErrorCustomConfig<TRequestConfig>,
 > implements OnModuleInit
 {
   protected readonly httpService: HttpService;
@@ -36,12 +37,12 @@ export abstract class AxiosInterceptor<
 
     (axios.interceptors.request as RequestManager).use(
       this.requestFulfilled(),
-      this.requestRejected()
+      this.requestRejected(),
     );
 
     (axios.interceptors.response as ResponseManager).use(
       this.responseFulfilled(),
-      this.responseRejected()
+      this.responseRejected(),
     );
   }
 
