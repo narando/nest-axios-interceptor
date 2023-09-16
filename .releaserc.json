@@ -5,5 +5,10 @@
     "@semantic-release/npm",
     "@semantic-release/git"
   ],
-  "repositoryUrl": "https://github.com/narando/nest-axios-interceptor"
+  "repositoryUrl": "https://github.com/narando/nest-axios-interceptor",
+  "branches": [
+    "main",
+    {"name": "beta", "prerelease": true},
+    {"name": "alpha", "prerelease": true}
+  ]
 }
